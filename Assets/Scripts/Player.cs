@@ -23,11 +23,12 @@ public class Player : MonoBehaviour
     public float amountOfWater = 10;
 
     [SerializeField]
-    private bool attacking = false; 
+    private bool attacking = false;
 
-
-
-
+    [SerializeField]
+    Animator animator;
+    [SerializeField]
+    TrailRenderer trailRenderer;
 
     void Start()
     {
@@ -51,6 +52,8 @@ public class Player : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
         Vector3 moveVector = new Vector3(horizontalMovement, 0, verticalMovement);
+        animator.SetFloat("movementX", horizontalMovement);
+        animator.SetFloat("movementY", verticalMovement);
         _controller.Move(new Vector3(horizontalMovement, gravity, verticalMovement) * Time.deltaTime * _speed);
     }
 
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !attacking) //Attack
         {
+            animator.SetTrigger("attack");
             StartCoroutine("AttackRoutine");  
         }
 
@@ -86,15 +90,18 @@ public class Player : MonoBehaviour
         _weapon.SetActive(true);
         var speedTemp = _speed;
         attacking = true; 
-        _speed = 0; 
+        _speed = 0;
+        trailRenderer.emitting = true;
         //ATTACK AUDIO CLIP
 
 
         yield return new WaitForSeconds(0.25f);
-
         attacking = false; 
         _weapon.SetActive(false);
-        _speed = speedTemp; 
+        _speed = speedTemp;
+        trailRenderer.emitting = false;
+        yield return new WaitForSeconds(0.25f);
+        
     }
 
     void Watering()
@@ -104,6 +111,7 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.Mouse1) && amountOfWater > 0)
         {
             _water.Emit(2);
+            animator.SetTrigger("watering");
             amountOfWater -= _waterDepletionRate * Time.deltaTime; 
 
             // WATERING AUDIO CLIP
