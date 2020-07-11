@@ -61,6 +61,8 @@ public class Plants : MonoBehaviour
         switch (plantLevel)
         {
             case PlantLevel.DIRTPILE:
+                plantLvl2.SetActive(true); 
+
                 ps.Emit(10);
                 audioSource.PlayOneShot(audioClip);
                 StartCoroutine(PlantGrowing_CO());

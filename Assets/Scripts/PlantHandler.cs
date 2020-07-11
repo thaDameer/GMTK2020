@@ -23,6 +23,7 @@ public class PlantHandler : MonoBehaviour
             spawnPositions.Add(child.transform.position);
         }
 
+
         StartCoroutine("SpawnPlantsRoutine"); 
     }
 

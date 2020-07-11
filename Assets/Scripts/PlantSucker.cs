@@ -19,6 +19,8 @@ public class PlantSucker : Plants
     // Update is called once per frame
     void Update()
     {
+
+        if (plantLevel != PlantLevel.MONSTER) return; 
         MoveTowardsRose(); 
     }
 
@@ -28,14 +30,17 @@ public class PlantSucker : Plants
         Vector3 relativePos = transform.position - bush.transform.position;
 
         navigation.SetDestination(bush.transform.position);
+        animator.SetTrigger("Walking"); 
 
         if (relativePos.magnitude < 3f)
         {
-            navigation.isStopped = true; 
+            navigation.isStopped = true;
+            animator.SetTrigger("sUCKING"); 
         }
         else
         {
-            navigation.isStopped = false; 
+            navigation.isStopped = false;
+            animator.SetTrigger("Walking");
         }
 
 
