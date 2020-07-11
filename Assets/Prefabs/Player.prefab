@@ -4913,7 +4913,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7ffef1f5a0543248a5a895fa5ff1573, type: 2}
+  - {fileID: 2100000, guid: 02c86eea274dd214badde98d4cf28d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4978,7 +4978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030ab049d0503444489d07637a8fa026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 0}
+  _controller: {fileID: 6996219615461596269}
   _water: {fileID: 6996219615457251835}
   _weapon: {fileID: 6996219616536396371}
   gravity: -9.81

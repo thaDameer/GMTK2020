@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2306394866511033937}
   - component: {fileID: 2306394866511033936}
   - component: {fileID: 2306394866511033948}
+  - component: {fileID: 1047303216}
   m_Layer: 4
   m_Name: Bush
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b332dec2b63a8b1498d9d8a372e45cf8, type: 2}
+  - {fileID: 2100000, guid: 02c86eea274dd214badde98d4cf28d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +109,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterLevel: 100
   _droughtRate: 1
+  _enemyDrainRate: 5
   _waterRate: 1
-  _mat: {fileID: 2100000, guid: b332dec2b63a8b1498d9d8a372e45cf8, type: 2}
+  _mat: {fileID: 2100000, guid: 558503f6eba1a0c4f9f30c3f0b811d9a, type: 2}
   fullHealthColor: {r: 0.07484871, g: 0.5471698, b: 0.19126461, a: 0}
   dryColor: {r: 0.4716981, g: 0.38795435, b: 0.246974, a: 0}
+--- !u!135 &1047303216
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306394866511033943}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.34
+  m_Center: {x: 0, y: 0, z: 0}
