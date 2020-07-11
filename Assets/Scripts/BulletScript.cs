@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+
     public  bool isAlive;
-   public  Vector3 shootDirection;     
+    public  Vector3 shootDirection;     
     public Rigidbody bulletRb;
     private float bulletSpeed;
     float lifetime = 1f;
 
+
+
     private void OnEnable()
     {
         isAlive = true;
-        
     }
 
     private void FixedUpdate()
