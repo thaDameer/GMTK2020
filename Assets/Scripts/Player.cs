@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     private ParticleSystem _water; 
 
     [SerializeField]
-    private GameObject _weapon; 
+    private GameObject _weapon;
+    public float gravity = -9.81f;
 
     [SerializeField]
     private float _speed = 0.5f;
@@ -48,7 +49,8 @@ public class Player : MonoBehaviour
     {
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
-        _controller.Move(new Vector3(horizontalMovement * _speed, 0, verticalMovement * _speed));
+        Vector3 moveVector = new Vector3(horizontalMovement, 0, verticalMovement);
+        _controller.Move(new Vector3(horizontalMovement, gravity, verticalMovement) * Time.deltaTime * _speed);
     }
 
     void Rotate() //rotates with mouse
