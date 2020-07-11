@@ -100,4 +100,16 @@ public class Plants : MonoBehaviour
                 break;
         }
     }
+
+
+    void TakeDamage()
+    {
+        health -= 1; 
+        if(health == 0)
+        {
+            Destroy(this.gameObject); 
+        }
+    }
+
+
 }
