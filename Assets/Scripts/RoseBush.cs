@@ -9,6 +9,8 @@ public class RoseBush : MonoBehaviour
     [SerializeField]
     private float _droughtRate = 1;
     [SerializeField]
+    private float _enemyDrainRate = 5;
+    [SerializeField]
     private float _waterRate = 2;
     [SerializeField]
     private Material _mat;
@@ -24,13 +26,25 @@ public class RoseBush : MonoBehaviour
 
     void Update()
     {
-        drought();
+        Drought();
         ColorChange(); 
     }
 
-    void drought()
+    void Drought()
     {
-        waterLevel -= _droughtRate * Time.deltaTime; 
+        if(waterLevel >= 0)
+        {
+            waterLevel -= _droughtRate * Time.deltaTime;
+        }
+         
+    }
+
+    void Drain()
+    {
+        if (waterLevel >= 0)
+        {
+            waterLevel -= _enemyDrainRate * Time.deltaTime;
+        }
     }
 
     private void OnParticleCollision(GameObject other)
@@ -39,6 +53,15 @@ public class RoseBush : MonoBehaviour
         if(waterLevel <= 100)
         {
             waterLevel += _waterRate; 
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            Debug.Log("Enemy In Range"); 
+            Drain(); 
         }
     }
 
