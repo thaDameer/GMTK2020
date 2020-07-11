@@ -23,13 +23,16 @@ public class Player : MonoBehaviour
     public float amountOfWater = 10;
 
     [SerializeField]
-    private bool attacking = false;
+    public bool attacking = false;
 
     [SerializeField]
     Animator animator;
     [SerializeField]
     TrailRenderer trailRenderer;
     public Collider weaponCollider;
+    //SFX
+    public AudioSource audioSource;
+    public AudioClip slashFX;
 
     void Start()
     {
@@ -45,14 +48,13 @@ public class Player : MonoBehaviour
         Rotate();
         Attack();
         Watering();
-        Debug.Log(enemyInRange);
     }
 
 
     void Move()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal");
-        float verticalMovement = Input.GetAxis("Vertical");
+        float horizontalMovement = Input.GetAxisRaw("Horizontal");
+        float verticalMovement = Input.GetAxisRaw("Vertical");
         Vector3 moveVector = new Vector3(horizontalMovement, 0, verticalMovement);
         animator.SetFloat("movementX", horizontalMovement);
         animator.SetFloat("movementY", verticalMovement);
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !attacking) //Attack
         {
+            audioSource.PlayOneShot(slashFX);
             animator.SetTrigger("attack");
             StartCoroutine("AttackRoutine");  
         }
@@ -108,14 +111,14 @@ public class Player : MonoBehaviour
     bool enemyInRange;
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+
         if (!attacking) return;
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             var enemy = other.GetComponent<Plants>();
             if (enemy)
             {
-                enemy.TakeDamage(1);
+              //  enemy.TakeDamage(1);
                 attacking = false;
             }
             enemyInRange = true;
