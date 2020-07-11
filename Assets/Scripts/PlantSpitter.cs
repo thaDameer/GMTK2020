@@ -30,11 +30,11 @@ public class PlantSpitter : Plants
         Quaternion rotation = Quaternion.LookRotation(relativePos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5 * Time.deltaTime);
     }
-    public float yOffset = 1f;
+    
     public void Shoot_AE()
     {
         var playerPos = GameManager.instance.player.transform.position;
-        playerPos.y = yOffset;
+        
         var relativePos = transform.position - playerPos;
         var seedClone = Instantiate(seedBullet,shootPos.transform.position, Quaternion.identity);
         seedClone.ShootBullet(playerPos, shootSpeed);      

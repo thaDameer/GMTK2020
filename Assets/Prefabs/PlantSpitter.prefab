@@ -126,6 +126,11 @@ MonoBehaviour:
   audioSource: {fileID: 1839098809}
   audioClip: {fileID: 8300000, guid: 3794005fb45866d46ae8a00429c013c4, type: 3}
   isAlive: 0
+  seedBullet: {fileID: -1864966919346513567, guid: 87a0537c468e15049bae52fb1d675880,
+    type: 3}
+  shootPos: {fileID: 1435754783782022977}
+  shootSpeed: 40
+  yOffset: 1
 --- !u!82 &1839098809
 AudioSource:
   m_ObjectHideFlags: 0
