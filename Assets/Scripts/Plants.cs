@@ -6,9 +6,9 @@ public class Plants : MonoBehaviour
 {
     public enum PlantLevel
     {
-        DIRTPILE,
-        BUSH,
-        MONSTER
+        DIRTPILE = 1,
+        BUSH = 2,
+        MONSTER = 3
     }
     [Header("Plant Level Objects")]
     public GameObject plantLvl1, plantLvl2, plantLvl3; 
@@ -19,11 +19,13 @@ public class Plants : MonoBehaviour
     public TimerSimple spawnTimer;
     public ParticleSystem ps;
     bool hasSpawned = false;
-
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public bool isAlive = false;
    
     private void Start()
     {
-        SpawnPlant(5);
+        
     }
 
     public void SpawnPlant(float spawnInterval)
@@ -33,7 +35,9 @@ public class Plants : MonoBehaviour
         plantLvl1.SetActive(true);
         spawnTimer = new TimerSimple(spawnInterval);
         plantLevel = PlantLevel.DIRTPILE;
+        animator.SetTrigger(plantLevel.ToString());
         ps.Emit(10);
+        audioSource.PlayOneShot(audioClip);
         StartCoroutine(PlantGrowing_CO());
         hasSpawned = true;
     }
@@ -49,13 +53,7 @@ public class Plants : MonoBehaviour
         LevelUp();
     }
 
-    public virtual void Update()
-    {
-        if (spawnTimer.isTimerElapsed)
-        {
-            LevelUp();
-        }
-    }
+    
 
     public void LevelUp()
     {
@@ -63,22 +61,24 @@ public class Plants : MonoBehaviour
         {
             case PlantLevel.DIRTPILE:
                 ps.Emit(10);
-                plantLvl1.SetActive(false);
-                plantLvl2.SetActive(true);
-                plantLvl3.SetActive(false);
+                audioSource.PlayOneShot(audioClip);
                 StartCoroutine(PlantGrowing_CO());
+                animator.SetTrigger(PlantLevel.BUSH.ToString());
                 plantLevel = PlantLevel.BUSH;
                 break;
             case PlantLevel.BUSH:
                 ps.Emit(10);
+                audioSource.PlayOneShot(audioClip);
                 plantLvl1.SetActive(false);
                 plantLvl2.SetActive(false);
                 plantLvl3.SetActive(true);
                 StartCoroutine(PlantGrowing_CO());
+                animator.SetTrigger(PlantLevel.MONSTER.ToString());
+                StopCoroutine(PlantGrowing_CO());
                 plantLevel = PlantLevel.MONSTER;
                 break;
             case PlantLevel.MONSTER:
-                ps.Emit(100);
+                
                 break;
         }
     }
