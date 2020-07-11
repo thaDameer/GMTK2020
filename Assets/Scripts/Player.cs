@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     Animator animator;
-
-
+    [SerializeField]
+    TrailRenderer trailRenderer;
 
     void Start()
     {
@@ -90,15 +90,18 @@ public class Player : MonoBehaviour
         _weapon.SetActive(true);
         var speedTemp = _speed;
         attacking = true; 
-        _speed = 0; 
+        _speed = 0;
+        trailRenderer.emitting = true;
         //ATTACK AUDIO CLIP
 
 
         yield return new WaitForSeconds(0.25f);
-
         attacking = false; 
         _weapon.SetActive(false);
-        _speed = speedTemp; 
+        _speed = speedTemp;
+        trailRenderer.emitting = false;
+        yield return new WaitForSeconds(0.25f);
+        
     }
 
     void Watering()
@@ -108,6 +111,7 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.Mouse1) && amountOfWater > 0)
         {
             _water.Emit(2);
+            animator.SetTrigger("watering");
             amountOfWater -= _waterDepletionRate * Time.deltaTime; 
 
             // WATERING AUDIO CLIP
