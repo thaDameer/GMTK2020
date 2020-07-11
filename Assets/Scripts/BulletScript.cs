@@ -27,7 +27,7 @@ public class BulletScript : MonoBehaviour
             {
                 isAlive = false;
             }
-            bulletRb.AddForce(shootDirection * bulletSpeed, ForceMode.Acceleration);
+            bulletRb.AddForce(-shootDirection * 1, ForceMode.Impulse);
         }
     }
 
@@ -36,12 +36,13 @@ public class BulletScript : MonoBehaviour
 
         shootDirection = transform.position - GameManager.instance.player.transform.position;
         bulletSpeed = shootSpeed;
-        shootDirection = direction;
+        
         isAlive = true;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        isAlive = false;
         if(collision.gameObject.tag == "Player")
         {
             //Hurt the player!
