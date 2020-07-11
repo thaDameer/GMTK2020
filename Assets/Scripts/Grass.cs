@@ -7,7 +7,11 @@ public class Grass : MonoBehaviour
     [SerializeField]
     private GameObject _healthPrefab;
     [SerializeField]
-    private GameObject _waterPrefab; 
+    private GameObject _waterPrefab;
+    [SerializeField]
+    private ParticleSystem particles;
+
+    public bool isHit = false; 
 
 
     void Start()
@@ -25,10 +29,29 @@ public class Grass : MonoBehaviour
     {
         if(other.tag == "Weapon")
         {
-            if(Random.Range(0, 100) < 50)
+            Debug.Log("Grass is hit");
+            if (!isHit)
             {
-                
+                Debug.Log("Grass hit is Registered"); 
+                if (Random.Range(0, 100) < 30)
+                {
+                    Instantiate(_healthPrefab, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(_waterPrefab, transform.position, Quaternion.identity);
+                }
+
+                GetComponent<MeshRenderer>().enabled = false;
+                particles.Emit(50);
+
+                //Play audio (AudioSource.PlayClipAtPoint)
+
+                Destroy(this.gameObject, 0.5f);
+
+                isHit = true; 
             }
+            
         }
     }
 
