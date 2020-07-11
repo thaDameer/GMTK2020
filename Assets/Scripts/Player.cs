@@ -27,8 +27,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     Animator animator;
-    [SerializeField]
-    TrailRenderer trailRenderer;
+
 
 
     void Start()
@@ -36,7 +35,6 @@ public class Player : MonoBehaviour
         //_controller = GetComponent<CharacterController>();
         //_weapon = GetComponentInChildren<GameObject>();
         //_water = GetComponentInChildren<ParticleSystem>();
-        trailRenderer.emitting = false;
         _weapon.SetActive(false); 
     }
 
@@ -86,11 +84,9 @@ public class Player : MonoBehaviour
         }
 
     }
-    float attackTime = 0.25f;
+
     IEnumerator AttackRoutine()
     {
-
-        trailRenderer.emitting = true;
         _weapon.SetActive(true);
         var speedTemp = _speed;
         attacking = true; 
@@ -98,14 +94,11 @@ public class Player : MonoBehaviour
         //ATTACK AUDIO CLIP
 
 
-        yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(0.25f);
 
-        attacking = false;
+        attacking = false; 
         _weapon.SetActive(false);
-        _speed = speedTemp;
-        yield return new WaitForSeconds(0.3f);
-        trailRenderer.emitting = false;
-        yield break;
+        _speed = speedTemp; 
     }
 
     void Watering()
