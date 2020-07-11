@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField]
     TrailRenderer trailRenderer;
-    public ParticleSystem scythePs;
+    public GameObject attackParty;
     public Collider weaponCollider;
     //SFX
     public AudioSource audioSource;
@@ -121,8 +121,9 @@ public class Player : MonoBehaviour
             var enemy = other.GetComponent<Plants>();
             if (enemy)
             {
-                scythePs.transform.position = other.transform.position;
-                scythePs.Emit(40);
+                var party = Instantiate(attackParty, trailRenderer.transform.position, Quaternion.identity);
+
+                Destroy(party, 1f);
                 enemy.TakeDamage(1);
                 canDamage = false;
                 attacking = false;

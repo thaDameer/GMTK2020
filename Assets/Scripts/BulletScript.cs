@@ -47,5 +47,6 @@ public class BulletScript : MonoBehaviour
         {
             //Hurt the player!
         }
+        Destroy(gameObject, .4f);
     }
 }
