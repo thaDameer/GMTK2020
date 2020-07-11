@@ -1386,7 +1386,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.13333334
-    functionName: Shoot
+    functionName: Shoot_AE
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
