@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField]
     TrailRenderer trailRenderer;
+    public Collider weaponCollider;
 
     void Start()
     {
@@ -43,7 +44,8 @@ public class Player : MonoBehaviour
         Move();
         Rotate();
         Attack();
-        Watering(); 
+        Watering();
+        Debug.Log(enemyInRange);
     }
 
 
@@ -95,7 +97,7 @@ public class Player : MonoBehaviour
         //ATTACK AUDIO CLIP
 
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.2f);
         attacking = false; 
         _weapon.SetActive(false);
         _speed = speedTemp;
@@ -103,6 +105,31 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         
     }
+    bool enemyInRange;
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (!attacking) return;
+        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            var enemy = other.GetComponent<Plants>();
+            if (enemy)
+            {
+                enemy.TakeDamage(1);
+                attacking = false;
+            }
+            enemyInRange = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        enemyInRange = false;
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            enemyInRange = false;
+        }
+    }
+
 
     void Watering()
     {

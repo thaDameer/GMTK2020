@@ -14,7 +14,6 @@ public class PlantSpitter : Plants
         {
             SpawnPlant(1);
         }
-        Debug.Log(GameManager.instance.name);
         if (plantLevel != PlantLevel.MONSTER) return;
         RotateTowardsPlayer();
         if (Input.GetKeyDown(KeyCode.S))
