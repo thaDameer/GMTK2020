@@ -35,6 +35,7 @@ public class PlantSucker : Plants
         if (relativePos.magnitude < 3f)
         {
             navigation.isStopped = true;
+
             if(animator.GetBool("Sucking") == false)
             {
                 animator.SetBool("Sucking", true);
