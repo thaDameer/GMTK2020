@@ -21,17 +21,14 @@ public class Plants : MonoBehaviour
     bool hasSpawned = false;
     public AudioSource audioSource;
     public AudioClip audioClip;
+    public Color hitColor;
     public bool isAlive = false;
     
-   
-    private void Start()
-    {
-        
-    }
-
+    
     public void SpawnPlant(float spawnInterval)
     {
         if (hasSpawned) return;
+        UpdateHealth();
         this.spawnInterval = spawnInterval;
         plantLvl1.SetActive(true);
         spawnTimer = new TimerSimple(spawnInterval);
@@ -53,8 +50,6 @@ public class Plants : MonoBehaviour
         }
         LevelUp();
     }
-
-    
 
     public void LevelUp()
     {
@@ -104,9 +99,23 @@ public class Plants : MonoBehaviour
     }
 
 
-    void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        health -= 1; 
+        health -= damage;
+        switch (plantLevel)
+        {
+            case PlantLevel.DIRTPILE:
+                var meshRenderer = plantLvl1.GetComponentsInChildren<MeshRenderer>();
+                
+                break;
+            case PlantLevel.BUSH:
+
+                break;
+            case PlantLevel.MONSTER:
+
+                break;
+        }
+
         if(health == 0)
         {
             Destroy(this.gameObject); 
