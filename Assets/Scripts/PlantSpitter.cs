@@ -7,19 +7,20 @@ public class PlantSpitter : Plants
     public BulletScript seedBullet;
     public Transform shootPos;
     public float shootSpeed = 40f;
+    public float shootInterval = 5f;
+    private float currentTime;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnPlant(1);
-        }
+        
         if (plantLevel != PlantLevel.MONSTER) return;
         RotateTowardsPlayer();
-        if (Input.GetKeyDown(KeyCode.S))
+        if(currentTime >= shootInterval)
         {
             animator.SetTrigger("Shoot");
+            currentTime = 0;
         }
+        currentTime += Time.deltaTime;
 
     }
 

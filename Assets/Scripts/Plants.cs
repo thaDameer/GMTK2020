@@ -28,7 +28,6 @@ public class Plants : MonoBehaviour
     public void SpawnPlant(float spawnInterval)
     {
         if (hasSpawned) return;
-        UpdateHealth();
         this.spawnInterval = spawnInterval;
         plantLvl1.SetActive(true);
         spawnTimer = new TimerSimple(spawnInterval);
@@ -42,6 +41,7 @@ public class Plants : MonoBehaviour
 
     IEnumerator PlantGrowing_CO()
     {
+        UpdateHealth();
         spawnTimer.Start();
         while (spawnTimer.isRunning)
         {
@@ -116,8 +116,9 @@ public class Plants : MonoBehaviour
                 break;
         }
 
-        if(health == 0)
+        if(health <= 0)
         {
+            GameManager.instance.currentPlants -= 1;
             Destroy(this.gameObject); 
         }
     }

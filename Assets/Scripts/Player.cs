@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
             if (enemy)
             {
                 scythePs.transform.position = other.transform.position;
-                scythePs.Emit(20);
+                scythePs.Emit(40);
                 enemy.TakeDamage(1);
                 canDamage = false;
                 attacking = false;

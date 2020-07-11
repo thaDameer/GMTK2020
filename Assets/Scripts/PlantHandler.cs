@@ -12,9 +12,11 @@ public class PlantHandler : MonoBehaviour
 
     public List<Vector3> spawnPositions = new List<Vector3>(); 
 
-    public List<Plants> plantList = new List<Plants>(); 
+    public List<Plants> plantList = new List<Plants>();
 
+    public float minHandlerSpawnTime, maxHandlerSpawnTime;
 
+    public float minEnemySpawnTime, maxEnemySpawnTime; 
 
     void Start()
     {
@@ -33,6 +35,11 @@ public class PlantHandler : MonoBehaviour
         
     }
 
+    public int GetPlantAmount()
+    {
+        return spawnPositions.Count;
+    }
+
     void GenerateList(int amountOfPlants)
     {
 
@@ -46,16 +53,16 @@ public class PlantHandler : MonoBehaviour
             if (Random.Range(0, 100) <= 49)
             {
                 var spitterClone = Instantiate(spitterPrefab, position, Quaternion.Euler(0,Random.Range(0, 360), 0));
-                spitterClone.SpawnPlant(Random.Range(3,8)); 
+                spitterClone.SpawnPlant(Random.Range(minEnemySpawnTime,maxEnemySpawnTime)); 
                 
             }
             else
             {
                var suckerClone = Instantiate(suckerPrefab, position, Quaternion.identity);
-                suckerClone.SpawnPlant(Random.Range(3, 8)); 
+                suckerClone.SpawnPlant(Random.Range(minEnemySpawnTime, maxEnemySpawnTime)); 
             }
 
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(Random.Range(minHandlerSpawnTime,maxHandlerSpawnTime));
         }
 
        

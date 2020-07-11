@@ -266,7 +266,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c83bae62e5c2904d9f5e42a34a56ccc, type: 2}
+  - {fileID: 2100000, guid: 44af7076a0318ff499f1be6ec37d6217, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -492,13 +492,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513189225}
-  m_LocalRotation: {x: 0.6346602, y: -0, z: -0, w: 0.7727914}
-  m_LocalPosition: {x: 0.2, y: 36.2, z: -5.2}
+  m_LocalRotation: {x: 0.4840462, y: 0, z: 0, w: 0.8750425}
+  m_LocalPosition: {x: 0.2, y: 22.7, z: -17.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 78.79, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 57.9, y: 0, z: 0}
 --- !u!114 &513189229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,6 +1250,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 11.099998
       objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: minHandlerSpawnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: maxHandlerSpawnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: minEnemySpawnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: maxEnemySpawnTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6765751786288939953, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
         type: 3}
       propertyPath: m_Name
@@ -1550,6 +1570,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933330203}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1036758919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 775689776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00f42221c979ed4eb3057db55a04470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1205612898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,7 +2819,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roseBushPrefab: {fileID: 431034216}
+  plantHandler: {fileID: 1036758919}
   player: {fileID: 1593330192}
+  currentPlants: 0
 --- !u!4 &1894147677
 Transform:
   m_ObjectHideFlags: 0
@@ -2957,6 +2991,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306394866511033939, guid: 0ffa15f9f38baed42b40417ddb52cda1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9.8615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306394866511033939, guid: 0ffa15f9f38baed42b40417ddb52cda1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9.8615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306394866511033939, guid: 0ffa15f9f38baed42b40417ddb52cda1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 9.8615
       objectReference: {fileID: 0}
     - target: {fileID: 2306394866511033943, guid: 0ffa15f9f38baed42b40417ddb52cda1,
         type: 3}

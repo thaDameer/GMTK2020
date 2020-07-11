@@ -7,10 +7,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     public RoseBush roseBushPrefab;
-
-
+    public PlantHandler plantHandler;
     public Player player;
- 
+
+
+    //Level specific stuff
+    public int currentPlants;
+
     private void Awake()
     {
         if(instance == null)
@@ -19,15 +22,33 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    private void Update()
+    {
+        if (HasPlayerWon())
+        {
+            Debug.Log("WON!");
+        }
+    }
+
+    public bool HasPlayerWon()
+    {
+        if(currentPlants <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     void Start()
     {
-     
+        SetupLevel();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void SetupLevel()
     {
-        
+        currentPlants = plantHandler.GetPlantAmount();
     }
 }
