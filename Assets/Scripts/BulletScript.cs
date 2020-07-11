@@ -5,10 +5,12 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     bool isAlive;
+    Vector2 shootDirection;
 
     private void OnEnable()
     {
         isAlive = true;
+        
     }
 
     private void Update()
