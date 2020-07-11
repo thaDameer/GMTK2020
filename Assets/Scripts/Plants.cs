@@ -22,6 +22,7 @@ public class Plants : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClip;
     public bool isAlive = false;
+    
    
     private void Start()
     {

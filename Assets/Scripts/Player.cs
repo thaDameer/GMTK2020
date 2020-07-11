@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private CharacterController _controller;
+    public CharacterController _controller;
 
     [SerializeField]
     private ParticleSystem _water; 
@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        _controller = GetComponent<CharacterController>();
-        _weapon = GetComponentInChildren<GameObject>();
-        _water = GetComponentInChildren<ParticleSystem>();
+        //_controller = GetComponent<CharacterController>();
+        //_weapon = GetComponentInChildren<GameObject>();
+        //_water = GetComponentInChildren<ParticleSystem>();
         _weapon.SetActive(false); 
     }
 

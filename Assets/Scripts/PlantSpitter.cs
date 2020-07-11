@@ -11,6 +11,7 @@ public class PlantSpitter : Plants
         {
             SpawnPlant(1);
         }
+        Debug.Log(GameManager.instance.name);
     }
 }
 
