@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField]
     TrailRenderer trailRenderer;
+    public ParticleSystem scythePs;
     public Collider weaponCollider;
     //SFX
     public AudioSource audioSource;
@@ -89,7 +90,7 @@ public class Player : MonoBehaviour
         }
 
     }
-
+    bool canDamage;
     IEnumerator AttackRoutine()
     {
         _weapon.SetActive(true);
@@ -101,24 +102,29 @@ public class Player : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.2f);
+        canDamage = true;
         attacking = false; 
         _weapon.SetActive(false);
         _speed = speedTemp;
+        yield return new WaitForSeconds(0.3f);
         trailRenderer.emitting = false;
-        yield return new WaitForSeconds(0.25f);
+        canDamage = false;
         
     }
     bool enemyInRange;
     private void OnTriggerStay(Collider other)
     {
 
-        if (!attacking) return;
+        if (!canDamage) return;
         if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             var enemy = other.GetComponent<Plants>();
             if (enemy)
             {
-              //  enemy.TakeDamage(1);
+                scythePs.transform.position = other.transform.position;
+                scythePs.Emit(20);
+                enemy.TakeDamage(1);
+                canDamage = false;
                 attacking = false;
             }
             enemyInRange = true;
