@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlantSpitter : Plants
 {
-    public GameObject seedBullet;
+    public BulletScript seedBullet;
     public Transform shootPos;
-    public float shootSpeed = 10f;
+    public float shootSpeed = 40f;
 
     private void Update()
     {
@@ -31,14 +31,13 @@ public class PlantSpitter : Plants
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5 * Time.deltaTime);
     }
     public float yOffset = 1f;
-    public void Shoot()
+    public void Shoot_AE()
     {
         var playerPos = GameManager.instance.player.transform.position;
         playerPos.y = yOffset;
-        var shootDir =  playerPos - transform.position;
-        var seedClone = Instantiate(seedBullet, shootPos);
-        var seedRb = seedClone.GetComponent<Rigidbody>();
-        seedRb.AddForce(shootDir * shootSpeed, ForceMode.Impulse);
+        var relativePos = transform.position - playerPos;
+        var seedClone = Instantiate(seedBullet,shootPos.transform.position, Quaternion.identity);
+        seedClone.ShootBullet(playerPos, shootSpeed);      
 
     }
 }
