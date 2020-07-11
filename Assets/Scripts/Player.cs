@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) //Attack
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !attacking) //Attack
         {
             StartCoroutine("AttackRoutine");  
         }
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
         //ATTACK AUDIO CLIP
 
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.25f);
 
         attacking = false; 
         _weapon.SetActive(false);
