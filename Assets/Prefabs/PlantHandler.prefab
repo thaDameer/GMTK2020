@@ -392,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6765751786288939959
 Transform:
   m_ObjectHideFlags: 0
@@ -431,9 +431,13 @@ MonoBehaviour:
     type: 3}
   suckerPrefab: {fileID: 1237548719851534939, guid: 67e735f422c5c2748a8e09961f62601a,
     type: 3}
-  startPosition: {fileID: 0}
   spawnPositions: []
-  plantList: []
+  minHandlerSpawnTime: 0
+  maxHandlerSpawnTime: 0
+  minEnemySpawnTime: 0
+  maxEnemySpawnTime: 0
+  level: 0
+  activePlants: 0
 --- !u!1 &6765751786451914378
 GameObject:
   m_ObjectHideFlags: 0

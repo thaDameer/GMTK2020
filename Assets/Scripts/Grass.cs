@@ -78,11 +78,11 @@ public class Grass : MonoBehaviour
 
         float random = Random.Range(0, 100);
 
-        if (random < 25)
+        if (random < 10)
         {
             Instantiate(_healthPrefab, dropSpawnPos, Quaternion.identity);
         }
-        else if (random >= 25 && random < 70)
+        else if (random >= 25 && random < 55)
         {
             Instantiate(_waterPrefab, dropSpawnPos, Quaternion.identity);
         }

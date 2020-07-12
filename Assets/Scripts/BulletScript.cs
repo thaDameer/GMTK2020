@@ -9,7 +9,7 @@ public class BulletScript : MonoBehaviour
     public  Vector3 shootDirection;     
     public Rigidbody bulletRb;
     private float bulletSpeed;
-    float lifetime = 2f;
+    float lifetime = 3f;
 
 
 
