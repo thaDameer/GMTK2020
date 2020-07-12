@@ -188,9 +188,14 @@ public class Player : MonoBehaviour
     {
         if (!isDead)
         {
-            animator.SetBool("isDead",isDead);
+            
+
+           
+            animator.SetBool("isDead",true);
             isDead = true;
         }
+
+        GetComponent<CharacterController>().enabled = false;
 
         //PLAY ANIMATION 
     }
