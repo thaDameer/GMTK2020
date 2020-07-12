@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     //SFX
     public AudioSource audioSource;
     public AudioClip slashFX;
+    public AudioSource audioSourceWatering;
+    public AudioClip waterFX; 
 
     void Start()
     {
@@ -157,10 +159,20 @@ public class Player : MonoBehaviour
         {
             _water.Emit(2);
             animator.SetTrigger("watering");
-            amountOfWater -= _waterDepletionRate * Time.deltaTime; 
+            amountOfWater -= _waterDepletionRate * Time.deltaTime;
 
+            if (!audioSourceWatering.isPlaying)
+            {
+                audioSourceWatering.Play();
+            }
+            
             // WATERING AUDIO CLIP
 
+        }
+
+        if(Input.GetKeyUp(KeyCode.Mouse1) || amountOfWater == 0)
+        {
+            audioSourceWatering.Stop();
         }
         
     }

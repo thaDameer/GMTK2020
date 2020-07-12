@@ -44,7 +44,7 @@ public class PlantSucker : Plants
                 animator.SetBool("Sucking", true);
                 GetComponent<AudioSource>().clip = _suckingClip;
                 GetComponent<AudioSource>().loop = true;
-                GetComponent<AudioSource>().volume = 0.5f; 
+                GetComponent<AudioSource>().volume = 0.2f; 
                 GetComponent<AudioSource>().Play(); 
             }
             
