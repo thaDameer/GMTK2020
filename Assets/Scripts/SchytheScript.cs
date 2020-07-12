@@ -7,7 +7,7 @@ public class SchytheScript : MonoBehaviour
     public ParticleSystem ps;
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.name);
+
         var enemy = other.GetComponent<Plants>();
         if (enemy)
         {

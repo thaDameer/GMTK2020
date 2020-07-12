@@ -43,11 +43,17 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        isAlive = false;
         if(collision.gameObject.tag == "Player")
         {
-            //Hurt the player!
+            var player = collision.gameObject.GetComponent<Player>();
+            if (player && isAlive)
+            {
+                Debug.Log("HIT");
+                player.PlayerDamage();
+                isAlive = false;
+            }
         }
         Destroy(gameObject, .4f);
+        
     }
 }

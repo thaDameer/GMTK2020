@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         //ATTACK AUDIO CLIP
 
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         canDamage = true;
         attacking = false; 
         _weapon.SetActive(false);
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
             var enemy = other.GetComponent<Plants>();
             if (enemy)
             {
-                var party = Instantiate(attackParty, trailRenderer.transform.position, Quaternion.identity);
+                var party = Instantiate(attackParty, other.transform.position, Quaternion.identity);
 
                 Destroy(party, 1f);
                 enemy.TakeDamage(1);
@@ -149,7 +149,6 @@ public class Player : MonoBehaviour
     void Watering()
     {
 
-        Debug.Log("Watering"); 
         if(Input.GetKey(KeyCode.Mouse1) && amountOfWater > 0)
         {
             _water.Emit(2);
@@ -164,13 +163,19 @@ public class Player : MonoBehaviour
 
     private void PlayerDead()
     {
-        isDead = true;
+        if (!isDead)
+        {
+            animator.SetBool("isDead",isDead);
+            isDead = true;
+        }
+
         //PLAY ANIMATION 
     }
 
     public void PlayerDamage()
     {
-        health -= 1; 
+        health -= 1;
+        animator.SetTrigger("damage");
 
         if(health <= 0)
         {

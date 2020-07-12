@@ -129,7 +129,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: b09448ca6e8096b4392ae39121c2a2f5, type: 3}
   hitColor: {r: 0, g: 0, b: 0, a: 0}
   isAlive: 0
-  seedBullet: {fileID: -1864966919346513567, guid: 87a0537c468e15049bae52fb1d675880,
+  seedBullet: {fileID: -3017039714438001954, guid: 87a0537c468e15049bae52fb1d675880,
     type: 3}
   shootPos: {fileID: 1435754783782022977}
   shootSpeed: 40
