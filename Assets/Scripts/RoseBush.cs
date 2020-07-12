@@ -60,7 +60,7 @@ public class RoseBush : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            Debug.Log("Enemy In Range"); 
+
             Drain(); 
         }
     }
