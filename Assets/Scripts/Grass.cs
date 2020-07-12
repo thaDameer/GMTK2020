@@ -71,7 +71,7 @@ public class Grass : MonoBehaviour
             
     //    }
     //}
-    public void CutGrass()
+    public void CutGrass() 
     {
         if (isHit) return;
         AudioSource.PlayClipAtPoint(cutGrassClip, Camera.main.transform.position);
