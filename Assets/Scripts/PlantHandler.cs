@@ -48,7 +48,7 @@ public class PlantHandler : MonoBehaviour
         
     }
 
-    public int GetPlantAmount()
+    public int GetPlantAmount(int waves)
     {
         return spawnPositions.Count;
     }
@@ -103,6 +103,8 @@ public class PlantHandler : MonoBehaviour
 
     IEnumerator Level2Routine()
     {
+        
+
         yield return new WaitForSeconds(10);
 
         foreach (Vector3 position in spawnPositions)
@@ -144,5 +146,17 @@ public class PlantHandler : MonoBehaviour
         }
 
     }
+
+   //public int GetPlantAmount(int waves)
+   // {
+   //     int numberOfEnemies = 0;
+
+   //     for (int i = waves; i < waves; i++)
+   //     {
+   //         numberOfEnemies += spawnPositions.Count;
+   //     }
+
+   //     return numberOfEnemies; 
+   // }
 
 }
