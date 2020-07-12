@@ -35,10 +35,10 @@ public class PlantSpitter : Plants
     public void Shoot_AE()
     {
         var playerPos = GameManager.instance.player.transform.position;
-
+        
         AudioSource.PlayClipAtPoint(shootClip, transform.position); 
 
-        var relativePos = transform.position - playerPos;
+        var relativePos = new Vector3  (transform.position.x - playerPos.x, 1, transform.position.z - playerPos.z);
         var seedClone = Instantiate(seedBullet,shootPos.transform.position, Quaternion.identity);
         seedClone.ShootBullet(playerPos, shootSpeed);      
 
