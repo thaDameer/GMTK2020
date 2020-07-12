@@ -6,9 +6,13 @@ public class Pickups : MonoBehaviour
 {
     [SerializeField]
     private int type; // 1 = health, 2 = water
-    void Start()
+    [SerializeField]
+    private int pickupLifetime = 10; 
+
+
+    void Awake()
     {
-        
+        StartCoroutine("DespawnPickups"); 
     }
 
     void Update()
@@ -34,5 +38,12 @@ public class Pickups : MonoBehaviour
                 Destroy(this.gameObject); 
             }
         }
+    }
+
+    IEnumerator DespawnPickups()
+    {
+        yield return new WaitForSeconds(pickupLifetime);
+
+        Destroy(this.gameObject); 
     }
 }
