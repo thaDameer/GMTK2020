@@ -4968,6 +4968,7 @@ MonoBehaviour:
   hitColor: {r: 0, g: 0, b: 0, a: 0}
   isAlive: 0
   _speed: 2
+  _suckingClip: {fileID: 8300000, guid: 9f693909beea20248bc68b44613031b1, type: 3}
   navigation: {fileID: 1237548719851534941}
 --- !u!54 &1237548719851534938
 Rigidbody:

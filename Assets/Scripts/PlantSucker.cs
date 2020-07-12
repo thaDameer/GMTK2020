@@ -8,6 +8,9 @@ public class PlantSucker : Plants
    [SerializeField]
    private float _speed = 2;
 
+    [SerializeField]
+    private AudioClip _suckingClip; 
+
     public NavMeshAgent navigation; 
 
     RoseBush bush; 
@@ -39,6 +42,10 @@ public class PlantSucker : Plants
             if(animator.GetBool("Sucking") == false)
             {
                 animator.SetBool("Sucking", true);
+                GetComponent<AudioSource>().clip = _suckingClip;
+                GetComponent<AudioSource>().loop = true;
+                GetComponent<AudioSource>().volume = 0.5f; 
+                GetComponent<AudioSource>().Play(); 
             }
             
         }
@@ -46,7 +53,8 @@ public class PlantSucker : Plants
         {
             navigation.isStopped = false;
             animator.SetTrigger("Walking");
-            animator.SetBool("Sucking", false); 
+            animator.SetBool("Sucking", false);
+            GetComponent<AudioSource>().Stop();
         }
 
 
