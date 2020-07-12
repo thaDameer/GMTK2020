@@ -27,7 +27,8 @@ public class BulletScript : MonoBehaviour
             {
                 isAlive = false;
             }
-            bulletRb.AddForce(-shootDirection * 1, ForceMode.Impulse);
+            bulletRb.velocity += -shootDirection * 3 * Time.fixedDeltaTime;
+            //bulletRb.AddForce(-shootDirection * 1, ForceMode.Impulse);
         }
     }
 
