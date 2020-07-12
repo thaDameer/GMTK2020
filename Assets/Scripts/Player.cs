@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
+                Debug.Log(hit.transform.name);
                 var hitPos = hit.point;
                 var targetRotation = Quaternion.LookRotation(hitPos - transform.position);
                 targetRotation.x = 0;

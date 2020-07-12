@@ -7774,10 +7774,35 @@ PrefabInstance:
       propertyPath: isTutorialLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: minHandlerSpawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: maxHandlerSpawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: minEnemySpawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939952, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: maxEnemySpawnTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6765751786288939953, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
         type: 3}
       propertyPath: m_Name
       value: PlantHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765751786288939953, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6765751786288939959, guid: 5d3cf0445e2abd045acee6114a6ad3aa,
         type: 3}
