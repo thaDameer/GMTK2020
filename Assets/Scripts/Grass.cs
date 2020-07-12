@@ -31,45 +31,76 @@ public class Grass : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Weapon")
-        {
-            Player player = other.GetComponentInParent<Player>();
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.tag == "Weapon")
+    //    {
+    //        Player player = other.GetComponentInParent<Player>();
            
 
-            if (!isHit && player.attacking)
-            {
-                AudioSource.PlayClipAtPoint(cutGrassClip, Camera.main.transform.position);
+    //        if (!isHit && player.attacking)
+    //        {
+    //            AudioSource.PlayClipAtPoint(cutGrassClip, Camera.main.transform.position);
 
-                float random = Random.Range(0, 100);
+    //            float random = Random.Range(0, 100);
 
-                if (random < 25)
-                {
-                    Instantiate(_healthPrefab, dropSpawnPos, Quaternion.identity);
-                }
-                else if(random >= 25 && random < 70)
-                {
-                    Instantiate(_waterPrefab, dropSpawnPos, Quaternion.identity);
-                }
-                else
-                {
+    //            if (random < 25)
+    //            {
+    //                Instantiate(_healthPrefab, dropSpawnPos, Quaternion.identity);
+    //            }
+    //            else if(random >= 25 && random < 70)
+    //            {
+    //                Instantiate(_waterPrefab, dropSpawnPos, Quaternion.identity);
+    //            }
+    //            else
+    //            {
 
-                }
+    //            }
 
-                GetComponent<MeshRenderer>().enabled = false;
-                particles.Emit(50);
+    //            GetComponent<MeshRenderer>().enabled = false;
+    //            particles.Emit(50);
 
-                //Play audio (AudioSource.PlayClipAtPoint)
+    //            //Play audio (AudioSource.PlayClipAtPoint)
 
                 
 
-                Destroy(this.gameObject, 0.5f);
+    //            Destroy(this.gameObject, 0.5f);
 
-                isHit = true; 
-            }
+    //            isHit = true; 
+    //        }
             
+    //    }
+    //}
+    public void CutGrass()
+    {
+        if (isHit) return;
+        AudioSource.PlayClipAtPoint(cutGrassClip, Camera.main.transform.position);
+
+        float random = Random.Range(0, 100);
+
+        if (random < 25)
+        {
+            Instantiate(_healthPrefab, dropSpawnPos, Quaternion.identity);
         }
+        else if (random >= 25 && random < 70)
+        {
+            Instantiate(_waterPrefab, dropSpawnPos, Quaternion.identity);
+        }
+        else
+        {
+
+        }
+
+        GetComponent<MeshRenderer>().enabled = false;
+        particles.Emit(50);
+
+        //Play audio (AudioSource.PlayClipAtPoint)
+
+
+
+        Destroy(this.gameObject, 0.5f);
+
+        isHit = true;
     }
 
 }

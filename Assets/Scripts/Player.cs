@@ -121,19 +121,23 @@ public class Player : MonoBehaviour
     {
 
         if (!canDamage) return;
-        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+      
+        var enemy = other.GetComponent<Plants>();
+        if (enemy)
         {
-            var enemy = other.GetComponent<Plants>();
-            if (enemy)
-            {
-                var party = Instantiate(attackParty, other.transform.position, Quaternion.identity);
+            var party = Instantiate(attackParty, other.transform.position, Quaternion.identity);
 
-                Destroy(party, 1f);
-                enemy.TakeDamage(1);
-                canDamage = false;
-                attacking = false;
-            }
-            enemyInRange = true;
+            Destroy(party, 1f);
+            enemy.TakeDamage(1);
+            canDamage = false;
+            attacking = false;
+        }
+       
+     
+        var grass = other.GetComponent<Grass>();
+        if (grass)
+        {
+            grass.CutGrass();
         }
     }
     private void OnTriggerExit(Collider other)
