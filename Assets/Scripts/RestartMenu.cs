@@ -1,18 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class RestartMenu : MonoBehaviour
+public class RestartMenu : Menu
 {
-    // Start is called before the first frame update
-    void Start()
+    string lostText;
+    public Text text;
+
+    public override void Awake()
     {
-        
+        base.Awake();
+    }
+    public override void Show()
+    {
+        base.Show();
+        text.text = lostText;
+    }
+    public string SetLostText(string textToDisplay)
+    {
+        lostText = textToDisplay;
+        return textToDisplay;
+    }
+    public override void Hide()
+    {
+        base.Hide();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RestartScene()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        base.Hide();
     }
 }
