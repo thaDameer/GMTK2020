@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
         //_controller = GetComponent<CharacterController>();
         //_weapon = GetComponentInChildren<GameObject>();
         //_water = GetComponentInChildren<ParticleSystem>();
-        _weapon.SetActive(false); 
+        _weapon.SetActive(false);
+        health = _maxHealth;
     }
 
     void Update()
@@ -89,6 +90,7 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
+        if (attacking || canDamage) return;
         if (Input.GetKeyDown(KeyCode.Mouse0) && !attacking) //Attack
         {
             audioSource.PlayOneShot(slashFX);
@@ -113,7 +115,7 @@ public class Player : MonoBehaviour
         attacking = false; 
         _weapon.SetActive(false);
         _speed = speedTemp;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         trailRenderer.emitting = false;
         canDamage = false;
         
@@ -160,7 +162,7 @@ public class Player : MonoBehaviour
             _water.Emit(2);
             animator.SetTrigger("watering");
             amountOfWater -= _waterDepletionRate * Time.deltaTime;
-
+            GameManager.instance.uiHandler.UpdateWaterLevelUI(amountOfWater);
             if (!audioSourceWatering.isPlaying)
             {
                 audioSourceWatering.Play();
@@ -191,8 +193,9 @@ public class Player : MonoBehaviour
     public void PlayerDamage()
     {
         health -= 1;
+        GameManager.instance.cameraScript.CameraShake();
         animator.SetTrigger("damage");
-
+        GameManager.instance.uiHandler.UpdateHealth(health);
         if(health <= 0)
         {
             PlayerDead(); 
@@ -201,8 +204,8 @@ public class Player : MonoBehaviour
 
     public void PickupHealth()
     {
-        health += 4; 
-
+        health += 4;
+        GameManager.instance.uiHandler.UpdateHealth(health);
         if(health > _maxHealth)
         {
             health = _maxHealth; 
@@ -211,12 +214,13 @@ public class Player : MonoBehaviour
 
     public void PickupWater()
     {
-        amountOfWater += 2; 
+        amountOfWater += 2;
 
         if(amountOfWater > 10) //10 = maxWater?
         {
             amountOfWater = 10; 
         }
+        GameManager.instance.uiHandler.UpdateWaterLevelUI(amountOfWater);
     }
 
 }

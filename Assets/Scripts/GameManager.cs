@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public RoseBush roseBushPrefab;
     public PlantHandler plantHandler;
     public CameraScript cameraScript;
+    public UIHandler uiHandler;
     public Player player;
 
 

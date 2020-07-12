@@ -41,19 +41,35 @@ public class BulletScript : MonoBehaviour
         isAlive = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Player")
+
+        if (!isAlive) return;
+
+        var player = other.gameObject.GetComponent<Player>();
+        if (player && isAlive)
         {
-            var player = collision.gameObject.GetComponent<Player>();
-            if (player && isAlive)
-            {
-                Debug.Log("HIT");
-                player.PlayerDamage();
-                isAlive = false;
-            }
+            Debug.Log("HIT");
+            player.PlayerDamage();
+            isAlive = false;
+            Destroy(gameObject);
         }
-        Destroy(gameObject, .4f);
-        
+
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (!isAlive) return;
+
+    //        var player = collision.gameObject.GetComponent<Player>();
+    //        if (player && isAlive)
+    //        {
+    //            Debug.Log("HIT");
+    //            player.PlayerDamage();
+    //            isAlive = false;
+    //        }
+
+    //    Destroy(gameObject, .4f);
+        
+    //}
 }
