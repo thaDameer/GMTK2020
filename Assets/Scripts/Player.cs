@@ -14,16 +14,21 @@ public class Player : MonoBehaviour
     private GameObject _weapon;
     public float gravity = -9.81f;
 
+    public int _maxHealth = 20; 
+
     [SerializeField]
     private float _speed = 0.5f;
     [SerializeField]
     private float _waterDepletionRate = 0.1f; 
 
-    public int health = 3;
+    public int health = 20;
     public float amountOfWater = 10;
+
+    
 
     [SerializeField]
     public bool attacking = false;
+    public bool isDead = false; 
 
     [SerializeField]
     Animator animator;
@@ -156,4 +161,41 @@ public class Player : MonoBehaviour
         }
         
     }
+
+    private void PlayerDead()
+    {
+        isDead = true;
+        //PLAY ANIMATION 
+    }
+
+    public void PlayerDamage()
+    {
+        health -= 1; 
+
+        if(health <= 0)
+        {
+            PlayerDead(); 
+        }
+    }
+
+    public void PickupHealth()
+    {
+        health += 4; 
+
+        if(health > _maxHealth)
+        {
+            health = _maxHealth; 
+        }
+    }
+
+    public void PickupWater()
+    {
+        amountOfWater += 2; 
+
+        if(amountOfWater > 10) //10 = maxWater?
+        {
+            amountOfWater = 10; 
+        }
+    }
+
 }

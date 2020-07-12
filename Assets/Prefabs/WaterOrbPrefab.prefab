@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3879371045858780674}
   - component: {fileID: 3879371045858780675}
   - component: {fileID: 3879371045858780676}
+  - component: {fileID: -4066865098491118057}
   m_Layer: 0
   m_Name: WaterOrbPrefab
   m_TagString: WaterRefill
@@ -89,11 +90,24 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3879371045858780678}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4066865098491118057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879371045858780678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b21cee6ffae2df42806f6c8171ac8e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!1 &3879371047079622049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,8 +1411,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.7176471, g: 0.19607845, b: 0.16470589, a: 1}
-        key1: {r: 1, g: 0.5801887, b: 0.5801887, a: 1}
+        key0: {r: 0.19344072, g: 0.6419729, b: 0.6509434, a: 1}
+        key1: {r: 0.7797704, g: 0.9092666, b: 0.9339623, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}

@@ -11,12 +11,15 @@ public class Grass : MonoBehaviour
     [SerializeField]
     private ParticleSystem particles;
 
-    public bool isHit = false; 
+    public bool isHit = false;
+
+    private Vector3 dropSpawnPos; 
 
 
     void Start()
     {
-        
+        dropSpawnPos = new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z); 
+
     }
 
     // Update is called once per frame
@@ -29,17 +32,25 @@ public class Grass : MonoBehaviour
     {
         if(other.tag == "Weapon")
         {
-            Debug.Log("Grass is hit");
-            if (!isHit)
+            Player player = other.GetComponentInParent<Player>();
+           
+
+            if (!isHit && player.attacking)
             {
-                Debug.Log("Grass hit is Registered"); 
-                if (Random.Range(0, 100) < 30)
+
+                float random = Random.Range(0, 100);
+
+                if (random < 25)
                 {
-                    Instantiate(_healthPrefab, transform.position, Quaternion.identity);
+                    Instantiate(_healthPrefab, dropSpawnPos, Quaternion.identity);
+                }
+                else if(random >= 25 && random < 70)
+                {
+                    Instantiate(_waterPrefab, dropSpawnPos, Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(_waterPrefab, transform.position, Quaternion.identity);
+
                 }
 
                 GetComponent<MeshRenderer>().enabled = false;
