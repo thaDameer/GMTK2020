@@ -9,7 +9,11 @@ public class PlantSucker : Plants
    private float _speed = 2;
 
     [SerializeField]
-    private AudioClip _suckingClip; 
+    private AudioClip _suckingClip;
+    [SerializeField]
+    private AudioClip _walkingClip;
+    [SerializeField]
+    private AudioSource _walkingSource; 
 
     public NavMeshAgent navigation; 
 
@@ -17,6 +21,7 @@ public class PlantSucker : Plants
     void Start()
     {
         bush = GameManager.instance.roseBushPrefab;
+
     }
 
     // Update is called once per frame
@@ -33,19 +38,30 @@ public class PlantSucker : Plants
         Vector3 relativePos = transform.position - bush.transform.position;
 
         navigation.SetDestination(bush.transform.position);
-        animator.SetTrigger("Walking"); 
+        animator.SetTrigger("Walking");
+
+        if (!_walkingSource.isPlaying)
+        {
+            
+            _walkingSource.Play();
+
+            Debug.Log("WALKING SHOULD PLAY"); 
+        }
+
 
         if (relativePos.magnitude < 3f)
         {
             navigation.isStopped = true;
 
+            _walkingSource.Stop(); 
+
             if(animator.GetBool("Sucking") == false)
             {
                 animator.SetBool("Sucking", true);
-                GetComponent<AudioSource>().clip = _suckingClip;
-                GetComponent<AudioSource>().loop = true;
-                GetComponent<AudioSource>().volume = 0.2f; 
-                GetComponent<AudioSource>().Play(); 
+                audioSource.clip = _suckingClip;
+                audioSource.loop = true;
+                audioSource.volume = 0.2f; 
+                audioSource.Play(); 
             }
             
         }
@@ -54,7 +70,13 @@ public class PlantSucker : Plants
             navigation.isStopped = false;
             animator.SetTrigger("Walking");
             animator.SetBool("Sucking", false);
-            GetComponent<AudioSource>().Stop();
+            audioSource.Stop();
+
+            if (!_walkingSource.isPlaying)
+            {
+                _walkingSource.Play();
+            }
+             
         }
 
 
