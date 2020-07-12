@@ -13,9 +13,9 @@ public class RoseBush : MonoBehaviour
     [SerializeField]
     private float _waterRate = 2;
     [SerializeField]
-    private Material _mat;
+    private Material _mat, _roseMat;
 
-    public Color fullHealthColor, dryColor;  
+    public Color fullHealthColor, dryColor, roseFullHealthColor, roseDryColor;  
 
     private TimerSimple timer = new TimerSimple(100); 
 
@@ -68,6 +68,7 @@ public class RoseBush : MonoBehaviour
     void ColorChange()
     {
             _mat.color = Color.Lerp(dryColor, fullHealthColor, waterLevel / 100);
+        _roseMat.color = Color.Lerp(roseDryColor, roseFullHealthColor, waterLevel / 100); 
     }
 
 

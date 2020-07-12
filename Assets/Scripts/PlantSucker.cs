@@ -44,12 +44,10 @@ public class PlantSucker : Plants
         {
             
             _walkingSource.Play();
-
-            Debug.Log("WALKING SHOULD PLAY"); 
         }
 
 
-        if (relativePos.magnitude < 3f)
+        if (relativePos.magnitude < 5f)
         {
             navigation.isStopped = true;
 
