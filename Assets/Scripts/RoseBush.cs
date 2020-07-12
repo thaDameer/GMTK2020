@@ -45,6 +45,11 @@ public class RoseBush : MonoBehaviour
         {
             waterLevel -= _enemyDrainRate * Time.deltaTime;
         }
+        else if(waterLevel <= 0)
+        {
+            GameManager.instance.uiHandler.restartMenu.Show();
+            GameManager.instance.uiHandler.restartMenu.SetLostText("Your rose bush dried out!");
+        }
     }
 
     private void OnParticleCollision(GameObject other)

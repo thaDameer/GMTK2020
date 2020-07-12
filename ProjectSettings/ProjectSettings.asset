@@ -601,7 +601,7 @@ PlayerSettings:
     29: UNITY_POST_PROCESSING_STACK_V2
   platformArchitecture: {}
   scriptingBackend:
-    Standalone: 1
+    Standalone: 0
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
@@ -617,11 +617,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Template_Lightweight
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: D:\Unity Projects\GMTKJam2020\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 008d36287d77d701
   metroApplicationDescription: Template_Lightweight
   wsaImages: {}
   metroTileShortName: 

@@ -16,12 +16,12 @@ public class RestartMenu : Menu
     public override void Show()
     {
         base.Show();
-        text.text = lostText;
+        //text.text = lostText;
     }
-    public string SetLostText(string textToDisplay)
+    public void SetLostText(string textToDisplay)
     {
         lostText = textToDisplay;
-        return textToDisplay;
+        text.text = lostText;
     }
     public override void Hide()
     {

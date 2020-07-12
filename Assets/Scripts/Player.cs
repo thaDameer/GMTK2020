@@ -188,7 +188,8 @@ public class Player : MonoBehaviour
     {
         if (!isDead)
         {
-            GameManager.instance.uiHandler.restartMenu.Show();  
+            GameManager.instance.uiHandler.restartMenu.Show();
+            GameManager.instance.uiHandler.restartMenu.SetLostText("Defeated by the weeds");
             animator.SetBool("isDead",true);
             isDead = true;
         }
