@@ -4966,6 +4966,8 @@ MonoBehaviour:
   ps: {fileID: 139882588}
   audioSource: {fileID: 430502102}
   audioClip: {fileID: 8300000, guid: b09448ca6e8096b4392ae39121c2a2f5, type: 3}
+  hurtClip: {fileID: 8300000, guid: 23d360f86d3cb514aaf70791559466f7, type: 3}
+  dieClip: {fileID: 8300000, guid: c971b4ea0bb580040bd10aa26e452284, type: 3}
   hitColor: {r: 0, g: 0, b: 0, a: 0}
   isAlive: 0
   _speed: 2

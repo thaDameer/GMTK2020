@@ -21,6 +21,8 @@ public class Plants : MonoBehaviour
     bool hasSpawned = false;
     public AudioSource audioSource;
     public AudioClip audioClip;
+    public AudioClip hurtClip;
+    public AudioClip dieClip;
     public Color hitColor;
     public bool isAlive = false;
     
@@ -116,9 +118,16 @@ public class Plants : MonoBehaviour
                 break;
         }
 
+        if(health > 0)
+        {
+            AudioSource.PlayClipAtPoint(hurtClip, transform.position);
+        }
+        
+
         if(health <= 0)
         {
             GameManager.instance.currentPlants -= 1;
+            AudioSource.PlayClipAtPoint(dieClip, transform.position);
             Destroy(this.gameObject); 
         }
     }
