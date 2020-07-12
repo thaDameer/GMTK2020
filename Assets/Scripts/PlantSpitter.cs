@@ -7,7 +7,7 @@ public class PlantSpitter : Plants
     public BulletScript seedBullet;
     public Transform shootPos;
     public float shootSpeed = 40f;
-    public float shootInterval = 5f;
+    public float shootInterval = 4f;
     private float currentTime;
     public AudioClip shootClip; 
 

@@ -18,7 +18,7 @@ public class PlantHandler : MonoBehaviour
 
     public float minEnemySpawnTime, maxEnemySpawnTime;
 
-    public bool isTutorialLevel = false; 
+    public int level;  
 
     void Start()
     {
@@ -27,13 +27,17 @@ public class PlantHandler : MonoBehaviour
             spawnPositions.Add(child.transform.position);
         }
 
-        if (!isTutorialLevel)
+        if (level == 0)
         {
-            StartCoroutine("SpawnPlantsRoutine");
+            StartCoroutine("TutorialRoutine");
         }
-        else
+        else if(level == 1)
         {
-            StartCoroutine("TutorialRoutine"); 
+            StartCoroutine("SpawnPlantsLevel1Routine");
+        }
+        else if(level == 2)
+        {
+            StartCoroutine("Level2Routine"); 
         }
         
     }
@@ -54,7 +58,7 @@ public class PlantHandler : MonoBehaviour
 
     }
 
-    IEnumerator SpawnPlantsRoutine()
+    IEnumerator SpawnPlantsLevel1Routine()
     {
         foreach (Vector3 position in spawnPositions)
         {
@@ -95,6 +99,50 @@ public class PlantHandler : MonoBehaviour
             var spitterClone = Instantiate(spitterPrefab, spawnPositions[i], Quaternion.identity);
             spitterClone.SpawnPlant(2);
         }
+    }
+
+    IEnumerator Level2Routine()
+    {
+        yield return new WaitForSeconds(10);
+
+        foreach (Vector3 position in spawnPositions)
+        {
+
+            if (Random.Range(0, 100) <= 49)
+            {
+                var spitterClone = Instantiate(spitterPrefab, position, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                spitterClone.SpawnPlant(Random.Range(minEnemySpawnTime, maxEnemySpawnTime));
+
+            }
+            else
+            {
+                var suckerClone = Instantiate(suckerPrefab, position, Quaternion.identity);
+                suckerClone.SpawnPlant(Random.Range(minEnemySpawnTime, maxEnemySpawnTime));
+            }
+
+            yield return new WaitForSeconds(Random.Range(minHandlerSpawnTime, maxHandlerSpawnTime));
+        }
+
+        yield return new WaitForSeconds(10);
+
+        foreach (Vector3 position in spawnPositions)
+        {
+
+            if (Random.Range(0, 100) <= 49)
+            {
+                var spitterClone = Instantiate(spitterPrefab, position, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                spitterClone.SpawnPlant(Random.Range(minEnemySpawnTime, maxEnemySpawnTime));
+
+            }
+            else
+            {
+                var suckerClone = Instantiate(suckerPrefab, position, Quaternion.identity);
+                suckerClone.SpawnPlant(Random.Range(minEnemySpawnTime, maxEnemySpawnTime));
+            }
+
+            yield return new WaitForSeconds(Random.Range(minHandlerSpawnTime, maxHandlerSpawnTime));
+        }
+
     }
 
 }
