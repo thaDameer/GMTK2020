@@ -9,6 +9,7 @@ public class PlantSpitter : Plants
     public float shootSpeed = 40f;
     public float shootInterval = 5f;
     private float currentTime;
+    public AudioClip shootClip; 
 
     private void Update()
     {
@@ -34,7 +35,9 @@ public class PlantSpitter : Plants
     public void Shoot_AE()
     {
         var playerPos = GameManager.instance.player.transform.position;
-        
+
+        AudioSource.PlayClipAtPoint(shootClip, transform.position); 
+
         var relativePos = transform.position - playerPos;
         var seedClone = Instantiate(seedBullet,shootPos.transform.position, Quaternion.identity);
         seedClone.ShootBullet(playerPos, shootSpeed);      

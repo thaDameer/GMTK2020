@@ -136,6 +136,7 @@ MonoBehaviour:
   shootPos: {fileID: 1435754783782022977}
   shootSpeed: 40
   shootInterval: 5
+  shootClip: {fileID: 8300000, guid: 211f3faa10d9e1e44accf27ecfd04e71, type: 3}
 --- !u!82 &1839098809
 AudioSource:
   m_ObjectHideFlags: 0

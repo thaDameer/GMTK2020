@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlantSuckerAE : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip walkingClip; 
+    public AudioClip walkingClip;
+    public AudioClip shootClip; 
     void Start()
     {
         
@@ -17,8 +18,8 @@ public class PlantSuckerAE : MonoBehaviour
         
     }
 
-    public void PlayFootStep()
+    public void PlayShot()
     {
-        audioSource.PlayOneShot(walkingClip); 
+        audioSource.PlayOneShot(shootClip); 
     }
 }

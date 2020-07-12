@@ -23,7 +23,7 @@ public class Plants : MonoBehaviour
     public AudioClip audioClip;
     public AudioClip hurtClip;
     public AudioClip dieClip;
-    public Color hitColor;
+    public Color hitColor; 
     public bool isAlive = false;
     
     
@@ -131,6 +131,7 @@ public class Plants : MonoBehaviour
             Destroy(this.gameObject); 
         }
     }
+
 
 
 }

@@ -15,7 +15,10 @@ public class PlantSucker : Plants
     [SerializeField]
     private AudioSource _walkingSource; 
 
-    public NavMeshAgent navigation; 
+    public NavMeshAgent navigation;
+
+    [SerializeField]
+    private ParticleSystem _waterStream; 
 
     RoseBush bush; 
     void Start()
@@ -51,6 +54,7 @@ public class PlantSucker : Plants
         {
             navigation.isStopped = true;
 
+             
             _walkingSource.Stop(); 
 
             if(animator.GetBool("Sucking") == false)
@@ -59,7 +63,9 @@ public class PlantSucker : Plants
                 audioSource.clip = _suckingClip;
                 audioSource.loop = true;
                 audioSource.volume = 0.2f; 
-                audioSource.Play(); 
+                audioSource.Play();
+
+                _waterStream.Play();
             }
             
         }
