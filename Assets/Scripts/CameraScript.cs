@@ -33,10 +33,10 @@ public class CameraScript : MonoBehaviour
         var clampedPos = new Vector3(Mathf.Clamp(followPos.x, MIN_X, MAX_X), followPos.y, Mathf.Clamp(followPos.z, MIN_Z, MAX_Z));
         transform.position = Vector3.Lerp(transform.position, clampedPos, smoothSpeed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CameraShake();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    CameraShake();
+        //}
     }
     public void CameraShake()
     {
