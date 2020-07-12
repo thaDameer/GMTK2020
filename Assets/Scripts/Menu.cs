@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Menu : MonoBehaviour
 {
     public GameObject container;
 
-    public void Show()
+    public virtual void Awake()
+    {
+        Hide();
+    }
+
+    public virtual void Show()
     {
         container.SetActive(true);
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
         container.SetActive(false);
     }
 
-    public void ExitGame()
+    public virtual void ExitGame()
     {
         Application.Quit();
     }

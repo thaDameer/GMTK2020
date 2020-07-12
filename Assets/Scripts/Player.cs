@@ -188,9 +188,7 @@ public class Player : MonoBehaviour
     {
         if (!isDead)
         {
-            
-
-           
+            GameManager.instance.uiHandler.restartMenu.Show();  
             animator.SetBool("isDead",true);
             isDead = true;
         }

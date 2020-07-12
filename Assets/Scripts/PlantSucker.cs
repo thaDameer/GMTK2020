@@ -23,7 +23,7 @@ public class PlantSucker : Plants
     RoseBush bush; 
     void Start()
     {
-        bush = GameManager.instance.roseBushPrefab;
+        bush = GameManager.instance.roseBush;
         
     }
 
