@@ -4817,7 +4817,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5845817c98e154e45b59523c3e8e6889, type: 2}
+  - {fileID: 2100000, guid: 3d0dc3ff226163e43b7aa5e6c0c4e293, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4857,9 +4857,9 @@ MonoBehaviour:
   _mat: {fileID: 2100000, guid: 5845817c98e154e45b59523c3e8e6889, type: 2}
   _roseMat: {fileID: 8830196273332348141, guid: 18c6b721a76057e4cad2b08be8292210,
     type: 3}
-  fullHealthColor: {r: 0.6392157, g: 0.8313726, b: 0.5686275, a: 0}
+  fullHealthColor: {r: 0.8431373, g: 0.6509804, b: 0.7843138, a: 0}
   dryColor: {r: 0.6320754, g: 0.51788515, b: 0.42635277, a: 0}
-  roseFullHealthColor: {r: 0.99607843, g: 0.6431373, b: 0.545098, a: 1}
+  roseFullHealthColor: {r: 0.8431373, g: 0.28235295, b: 0.4431373, a: 1}
   roseDryColor: {r: 0.24528301, g: 0.20361754, b: 0.13074046, a: 0}
 --- !u!135 &8084426081933608379
 SphereCollider:
@@ -4964,6 +4964,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 18c6b721a76057e4cad2b08be8292210,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b28044190864a3b4ea9c1fac9bfa5a36, type: 2}
     - target: {fileID: -927199367670048503, guid: 18c6b721a76057e4cad2b08be8292210,
         type: 3}
       propertyPath: m_Name

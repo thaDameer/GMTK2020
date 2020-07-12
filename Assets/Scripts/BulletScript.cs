@@ -9,7 +9,7 @@ public class BulletScript : MonoBehaviour
     public  Vector3 shootDirection;     
     public Rigidbody bulletRb;
     private float bulletSpeed;
-    float lifetime = 1f;
+    float lifetime = 2f;
 
 
 
@@ -26,8 +26,9 @@ public class BulletScript : MonoBehaviour
             if(lifetime < 0)
             {
                 isAlive = false;
+                Destroy(this.gameObject); 
             }
-            bulletRb.velocity += -shootDirection * 3 * Time.fixedDeltaTime;
+            bulletRb.velocity = -shootDirection.normalized * 15 ;
             //bulletRb.AddForce(-shootDirection * 1, ForceMode.Impulse);
         }
     }
@@ -35,7 +36,7 @@ public class BulletScript : MonoBehaviour
     public void ShootBullet(Vector3 direction, float shootSpeed)
     {
 
-        shootDirection = transform.position - GameManager.instance.player.transform.position;
+        shootDirection = new Vector3 (transform.position.x - GameManager.instance.player.transform.position.x, 1, transform.position.z - GameManager.instance.player.transform.position.z);
         bulletSpeed = shootSpeed;
         
         isAlive = true;

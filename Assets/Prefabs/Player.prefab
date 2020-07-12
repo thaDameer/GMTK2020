@@ -10982,6 +10982,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.16440834
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: ec04c1305119dd141b38e13ae32e6dde,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 868a6faf9e9ffb74398d9d4b97f608fd, type: 2}
     - target: {fileID: -927199367670048503, guid: ec04c1305119dd141b38e13ae32e6dde,
         type: 3}
       propertyPath: m_Name
@@ -11073,6 +11078,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Watering_can
       objectReference: {fileID: 0}
+    - target: {fileID: 2718348877002814450, guid: 7b799ddccdc332e4eb6658d14255350b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 868a6faf9e9ffb74398d9d4b97f608fd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b799ddccdc332e4eb6658d14255350b, type: 3}
 --- !u!4 &616928388175165534 stripped
