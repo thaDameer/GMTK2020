@@ -25,36 +25,8 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    private void Update()
-    {
-        if (HasPlayerWon())
-        {
-            Debug.Log("WON!");
-        }
-    }
+  
 
-    public bool HasPlayerWon()
-    {
-        if(currentPlants <= 0 && roseBush.waterLevel != 0 && !player.isDead)
-        {
-            uiHandler.winMenu.Show();
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    void Start()
-    {
-        SetupLevel();
-    }
-    
-    public void SetupLevel()
-    {
-        currentPlants = plantHandler.GetPlantAmount();
-    }
     #region SCENE_MANAGEMENT
 
     public void RestartScene()

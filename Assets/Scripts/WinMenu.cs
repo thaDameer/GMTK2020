@@ -7,8 +7,6 @@ public class WinMenu : Menu
     public override void Awake()
     {
         base.Awake();
-        Debug.Break();
-        Debug.Log("BOOM");
     }
     public override void Hide()
     {
@@ -16,6 +14,7 @@ public class WinMenu : Menu
     }
     public override void Show()
     {
+        Debug.Log("SHOw");
         base.Show();
     }
     public override void ExitGame()

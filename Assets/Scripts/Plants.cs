@@ -126,7 +126,7 @@ public class Plants : MonoBehaviour
 
         if(health <= 0)
         {
-            GameManager.instance.currentPlants -= 1;
+            GameManager.instance.plantHandler.activePlants -= 1;
             AudioSource.PlayClipAtPoint(dieClip, transform.position);
             Destroy(this.gameObject); 
         }

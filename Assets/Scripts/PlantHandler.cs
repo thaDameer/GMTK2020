@@ -8,17 +8,16 @@ public class PlantHandler : MonoBehaviour
     public PlantSpitter spitterPrefab;
     public PlantSucker suckerPrefab;
 
-    public Transform startPosition;
-
     public List<Vector3> spawnPositions = new List<Vector3>(); 
 
-    public List<Plants> plantList = new List<Plants>();
 
     public float minHandlerSpawnTime, maxHandlerSpawnTime;
 
     public float minEnemySpawnTime, maxEnemySpawnTime;
 
-    public int level;  
+    public int level;
+
+    public int activePlants;
 
     void Start()
     {
@@ -26,6 +25,7 @@ public class PlantHandler : MonoBehaviour
         {
             spawnPositions.Add(child.transform.position);
         }
+        activePlants = spawnPositions.Count;
 
         if (level == 0)
         {
@@ -42,21 +42,11 @@ public class PlantHandler : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        Debug.Log(PlayerSavedBush());
     }
 
-    public int GetPlantAmount(int waves)
-    {
-        return spawnPositions.Count;
-    }
-
-    void GenerateList(int amountOfPlants)
-    {
-
-    }
 
     IEnumerator SpawnPlantsLevel1Routine()
     {
@@ -84,6 +74,7 @@ public class PlantHandler : MonoBehaviour
 
     IEnumerator TutorialRoutine()
     {
+
         yield return new WaitForSeconds(15);
 
         for(int i = 0; i < spawnPositions.Count/2; i++)
@@ -100,11 +91,23 @@ public class PlantHandler : MonoBehaviour
             spitterClone.SpawnPlant(2);
         }
     }
+    public bool PlayerSavedBush()
+    {
+        if(activePlants <= 0)
+        {
+            GameManager.instance.uiHandler.winMenu.Show();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     IEnumerator Level2Routine()
     {
-        
 
+        activePlants = activePlants * 2;
         yield return new WaitForSeconds(10);
 
         foreach (Vector3 position in spawnPositions)
@@ -146,17 +149,5 @@ public class PlantHandler : MonoBehaviour
         }
 
     }
-
-   //public int GetPlantAmount(int waves)
-   // {
-   //     int numberOfEnemies = 0;
-
-   //     for (int i = waves; i < waves; i++)
-   //     {
-   //         numberOfEnemies += spawnPositions.Count;
-   //     }
-
-   //     return numberOfEnemies; 
-   // }
 
 }
