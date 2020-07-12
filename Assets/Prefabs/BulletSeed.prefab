@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 2243671831038866093}
   - component: {fileID: 432863908397129352}
   - component: {fileID: -3017039714438001954}
+  - component: {fileID: -3146998119734569841}
   m_Layer: 0
   m_Name: BulletSeed
   m_TagString: Untagged
@@ -264,3 +265,16 @@ MonoBehaviour:
   isAlive: 1
   shootDirection: {x: 0, y: 0, z: 0}
   bulletRb: {fileID: 2243671831038866093}
+--- !u!135 &-3146998119734569841
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9101638576773633265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.0033797026, z: 0}
