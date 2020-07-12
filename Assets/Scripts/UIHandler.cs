@@ -7,6 +7,7 @@ public class UIHandler : MonoBehaviour
 {
     public RectTransform waterLevel;
     public Slider healthSlider;
+    
 
 
     public void UpdateHealth(int currentHealth)
