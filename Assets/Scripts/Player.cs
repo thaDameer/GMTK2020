@@ -40,7 +40,11 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip slashFX;
     public AudioSource audioSourceWatering;
-    public AudioClip waterFX; 
+    public AudioClip waterFX;
+
+    private Material originalMaterial;
+    public Material hitMaterial;
+    public SkinnedMeshRenderer meshRenderer;
 
     void Start()
     {
@@ -49,6 +53,7 @@ public class Player : MonoBehaviour
         //_water = GetComponentInChildren<ParticleSystem>();
         _weapon.SetActive(false);
         health = _maxHealth;
+        originalMaterial = meshRenderer.material;
     }
 
     void Update()
@@ -196,10 +201,23 @@ public class Player : MonoBehaviour
         GameManager.instance.cameraScript.CameraShake();
         animator.SetTrigger("damage");
         GameManager.instance.uiHandler.UpdateHealth(health);
+        StartCoroutine(TakeDamage_CO());
+        StartCoroutine(TakeDamage_CO());
         if(health <= 0)
         {
             PlayerDead(); 
         }
+    }
+    IEnumerator TakeDamage_CO()
+    {
+        meshRenderer.material = hitMaterial;
+        yield return new WaitForSeconds(0.05f);
+        meshRenderer.material = originalMaterial;
+        yield return new WaitForSeconds(0.05f);
+        meshRenderer.material = hitMaterial;
+        yield return new WaitForSeconds(0.05f);
+        meshRenderer.material = originalMaterial;
+       
     }
 
     public void PickupHealth()
