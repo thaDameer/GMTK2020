@@ -11,6 +11,9 @@ public class Grass : MonoBehaviour
     [SerializeField]
     private ParticleSystem particles;
 
+    [SerializeField]
+    private AudioClip cutGrassClip; 
+
     public bool isHit = false;
 
     private Vector3 dropSpawnPos; 
@@ -37,6 +40,7 @@ public class Grass : MonoBehaviour
 
             if (!isHit && player.attacking)
             {
+                AudioSource.PlayClipAtPoint(cutGrassClip, Camera.main.transform.position);
 
                 float random = Random.Range(0, 100);
 
@@ -57,6 +61,8 @@ public class Grass : MonoBehaviour
                 particles.Emit(50);
 
                 //Play audio (AudioSource.PlayClipAtPoint)
+
+                
 
                 Destroy(this.gameObject, 0.5f);
 

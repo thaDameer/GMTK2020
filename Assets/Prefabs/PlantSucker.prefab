@@ -4964,7 +4964,7 @@ MonoBehaviour:
   spawnInterval: 5
   ps: {fileID: 139882588}
   audioSource: {fileID: 430502102}
-  audioClip: {fileID: 8300000, guid: 3794005fb45866d46ae8a00429c013c4, type: 3}
+  audioClip: {fileID: 8300000, guid: b09448ca6e8096b4392ae39121c2a2f5, type: 3}
   hitColor: {r: 0, g: 0, b: 0, a: 0}
   isAlive: 0
   _speed: 2

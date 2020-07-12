@@ -1340,18 +1340,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 356122778660197578, guid: 25e3e1b5397bb8e4aa3799c7635ff23c,
-        type: 3}
-      propertyPath: _waterPrefab
-      value: 
-      objectReference: {fileID: 3879371045858780678, guid: b421288fc3755b943a9762be4d823e82,
-        type: 3}
-    - target: {fileID: 356122778660197578, guid: 25e3e1b5397bb8e4aa3799c7635ff23c,
-        type: 3}
-      propertyPath: _healthPrefab
-      value: 
-      objectReference: {fileID: 2277792097030886492, guid: 37a9a074be63c0c49a938371668b37ef,
-        type: 3}
     - target: {fileID: 4723017107831208722, guid: 25e3e1b5397bb8e4aa3799c7635ff23c,
         type: 3}
       propertyPath: m_LocalPosition.x

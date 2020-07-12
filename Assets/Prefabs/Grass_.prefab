@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8633645478586206465}
-  m_LocalRotation: {x: -0.43940625, y: 0.36825758, z: 0.55400497, w: 0.6036448}
+  m_LocalRotation: {x: -0.4394063, y: 0.36825666, z: 0.55400556, w: 0.6036448}
   m_LocalPosition: {x: 10.776, y: -0.18581, z: 9.8039}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4830,7 +4830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d94b6f4ddb18a4b9b526ea48f9c3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPrefab: {fileID: 0}
-  _waterPrefab: {fileID: 0}
+  _healthPrefab: {fileID: 2277792097030886492, guid: 37a9a074be63c0c49a938371668b37ef,
+    type: 3}
+  _waterPrefab: {fileID: 3879371045858780678, guid: b421288fc3755b943a9762be4d823e82,
+    type: 3}
   particles: {fileID: 356122778660197576}
+  cutGrassClip: {fileID: 8300000, guid: 1f9f26d68ba09e6499badf05874bb647, type: 3}
   isHit: 0
