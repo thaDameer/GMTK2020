@@ -50,7 +50,7 @@ public class BulletScript : MonoBehaviour
         if (player && isAlive)
         {
             Debug.Log("HIT");
-            player.PlayerDamage();
+            player.PlayerDamage(2);
             isAlive = false;
             Destroy(gameObject);
         }

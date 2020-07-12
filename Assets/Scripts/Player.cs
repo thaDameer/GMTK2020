@@ -198,9 +198,9 @@ public class Player : MonoBehaviour
         //PLAY ANIMATION 
     }
 
-    public void PlayerDamage()
+    public void PlayerDamage(int damage)
     {
-        health -= 1;
+        health -= damage;
         GameManager.instance.cameraScript.CameraShake();
         animator.SetTrigger("damage");
         GameManager.instance.uiHandler.UpdateHealth(health);
