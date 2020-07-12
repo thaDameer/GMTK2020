@@ -16,7 +16,9 @@ public class PlantHandler : MonoBehaviour
 
     public float minHandlerSpawnTime, maxHandlerSpawnTime;
 
-    public float minEnemySpawnTime, maxEnemySpawnTime; 
+    public float minEnemySpawnTime, maxEnemySpawnTime;
+
+    public bool isTutorialLevel = false; 
 
     void Start()
     {
@@ -25,8 +27,15 @@ public class PlantHandler : MonoBehaviour
             spawnPositions.Add(child.transform.position);
         }
 
-
-        StartCoroutine("SpawnPlantsRoutine"); 
+        if (!isTutorialLevel)
+        {
+            StartCoroutine("SpawnPlantsRoutine");
+        }
+        else
+        {
+            StartCoroutine("TutorialRoutine"); 
+        }
+        
     }
 
     // Update is called once per frame
@@ -66,6 +75,25 @@ public class PlantHandler : MonoBehaviour
         }
 
        
+    }
+
+    IEnumerator TutorialRoutine()
+    {
+        yield return new WaitForSeconds(15);
+
+        for(int i = 0; i < spawnPositions.Count/2; i++)
+        {
+            var suckerClone = Instantiate(suckerPrefab, spawnPositions[i], Quaternion.identity);
+            suckerClone.SpawnPlant(2);
+        }
+
+        yield return new WaitForSeconds(15);
+
+        for (int i = spawnPositions.Count / 2; i < spawnPositions.Count; i++)
+        {
+            var spitterClone = Instantiate(spitterPrefab, spawnPositions[i], Quaternion.identity);
+            spitterClone.SpawnPlant(2);
+        }
     }
 
 }

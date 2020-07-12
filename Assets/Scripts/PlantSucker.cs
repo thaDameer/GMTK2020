@@ -21,7 +21,7 @@ public class PlantSucker : Plants
     void Start()
     {
         bush = GameManager.instance.roseBushPrefab;
-
+        
     }
 
     // Update is called once per frame
